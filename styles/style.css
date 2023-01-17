@@ -1,34 +1,65 @@
-
-:root{
+:root {
     --clr-primary-200: hsl(277, 64%, 61%);
     --clr-primary-400: hsl(244, 38%, 16%);
     --clr-primary-800: hsl(233, 47%, 7%);
-   
+
     --clr-neutral-200: hsl(0, 0%, 100%);
     --clr-neutral-300: hsla(0, 0%, 100%, 0.75);
-    --clr-neutral-400: hsla(0, 0%, 100%, 0.6);
-        
+    --clr-neutral-400: hsla(0, 0%, 100%, 0.5);
+
     --ff-accent: 'Inter', sans-serif;
     --ff-base: 'Lexend Deca', sans-serif;
 
+    --fs-100: 0.6875rem;
+    --fs-200: 0.8125rem;
+    --fs-300: 0.9375rem;
+    --fs-400: 1.5rem;
+    --fs-700: 1.5rem;
+    --fs-900: 2rem;
+
+
+    --fs-small: var(--fs-100);
+    --fs-base: var(--fs-200);
+    --fs-head: var(--fs-300);
+    --fs-number: var(--fs-400);
+    --fs-title: var(--fs-700);
+
+
+    --fw-s-bold: 500;
     --fw-bold: 700;
 
-    --letter-sp: 1.2px;
+    --padding-b: 2rem;
+    --pading-i: 2rem;
+    --border: 1px solid white;
 }
+
+@media (min-width: 43em) {
+    :root {
+        --fs-small: var(--fs-200);
+        --fs-title: var(--fs-900);
+        --padding-b: 1rem;
+        --pading-i: 4rem;
+    }
+}
+
 
 /* Reset */
 /*
   1. Use a more-intuitive box-sizing model.
 */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
+
 /*
 2. Remove default margin
 */
 * {
-margin: 0;
+    margin: 0;
 }
+
 /*
 3. Allow percentage-based heights in the application
 */
@@ -39,157 +70,197 @@ Typographic tweaks!
 5. Improve text rendering
 */
 body {
-line-height: 1.7;
--webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3{
+
+h1,
+h2,
+h3 {
     line-height: 1.1;
 }
+
 /*
 6. Improve media defaults
 */
-img, picture, video, canvas, svg {
-display: block;
-max-width: 100%;
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
 }
+
 /*
 7. Remove built-in form typography styles
 */
-input, button, textarea, select {
-font: inherit;
+input,
+button,
+textarea,
+select {
+    font: inherit;
 }
+
 /*
 8. Avoid text overflows
 */
-p, h1, h2, h3, h4, h5, h6 {
-overflow-wrap: break-word;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
 }
+
 /*
 9. Create a root stacking context
 */
-#root, #__next {
-isolation: isolate;
+#root,
+#__next {
+    isolation: isolate;
 }
 
 /* General Styling */
-
-body{
+body {
     font-family: var(--ff-base);
-    font-size: 0.9375rem;
-    color: var(--clr-neutral-200);
-    background-color: var(--clr-primary-800);
+    font-size: var(--fs-base);
+    display: grid;
+    min-height: 100vh;
     display: grid;
     place-content: center;
-    min-height: 100vh;
-    margin: 4rem 1rem;
+    background-color: var(--clr-primary-800);
+    padding: 5rem 1.5rem;
 }
 
-a{
-    color:var(--clr-neutral-200);
+a {
+    color: white;
 }
-ul{
+
+ul {
     list-style: none;
     padding: 0;
 }
 
-/* Utilities */
-
-.flex-group{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    min-height: 19rem;
+footer {
+    margin-top: 1rem;
+    text-align: center;
+    color: white;
 }
-@media(min-width: 31em)  {
-    .flex-group{
-        flex-direction: row;
-        min-height: auto;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding-right: 2rem;
+
+
+img,
+source,
+picture {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Utility Classes */
+
+
+.img-container {
+    background-color: var(--clr-primary-200);
+}
+
+.img-blend {
+    mix-blend-mode: multiply;
+}
+
+
+.title-txt {
+    font-size: var(--fs-title);
+    color: var(--clr-neutral-200);
+    font-weight: var(--fw-bold);
+    font-family: var(--ff-accent);
+    letter-spacing: 1px;
+}
+
+@media (min-width: 43em) {
+    .title-txt {
+        line-height: 2.5rem;
     }
 }
 
+.head-txt {
+    font-family: var(--ff-accent);
+    font-size: var(--fs-head);
+    color: var(--clr-neutral-400);
+}
 
-/*  Card Styles  */
+@media (min-width: 43em) {
+    .head-txt {
+        margin-right: 1.5rem;
+    }
+}
 
-.card{
-    --content-padding: 1.5rem;
-    --content-spacing: 1rem;
+.num-txt {
+    font-family: var(--ff-accent);
+    font-size: var(--fs-number);
+    color: var(--clr-neutral-200);
+    font-weight: var(--fw-bold);
+}
 
-    display: grid;
-    background-color:var(--clr-primary-400);
+.list-item-txt {
+    color: var(--clr-neutral-400);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.accent-txt {
+    color: var(--clr-primary-200);
+}
+
+
+.bckg-card {
+    background-color: var(--clr-primary-400)
+}
+
+/* Card Styling */
+
+.card {
+    max-width: 62rem;
     border-radius: 0.5rem;
     overflow: hidden;
 }
-@media(min-width: 31em)  {
-    .card{
-        --content-padding: 4rem;
 
+@media (min-width: 43em) {
+    .card {
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        max-width: 67rem;
-    }
-}
-.card__image{
-    position: relative;
-}
-@media(min-width: 31em)  {
-    .card__image{
-        grid-row: 1/2;
-        grid-column: 2/3;
-    }
-}
-.card__image ::before{
-    content: "";
-    height: 100%;
-    width: 100%;
-    background-color: var(--clr-primary-200);
-    position: absolute;
-    opacity: 50%;
-}
-.card__content{
-    padding: var(--content-padding);
-    display: grid;
-    gap: var(--content-spacing);
-    text-align: center;
-}
-@media(min-width: 31em)  {
-    .card__content{
-        grid-column: 1/2;
-        text-align: left;
     }
 }
 
-.card__title{
-    font-size: 1.8rem;
-    font-family: var(--ff-accent);
-    letter-spacing: var(--letter-sp);
+.card__content {
+    text-align: center;
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
 }
-.card__title span{
-    color: var(--clr-primary-200);
-}
-.card__text{
-    padding: 0 0.5rem;
-    color: var(--clr-neutral-400);
-}
-@media(min-width: 31em)  {
-    .card__text{
-        padding: 0 2rem 0 0;
+
+@media (min-width: 43em) {
+    .card__content {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        text-align: left;
+        gap: 1rem;
+        padding: 4rem;
     }
 }
-.card__list-item-num{
-    font-family: var(--ff-accent);
-    font-size: 1.5rem;
-    font-weight: var(--fw-bold);
-    letter-spacing: var(--letter-sp);
+
+.card__stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
-.card__list-item-data{
-    text-transform: uppercase;
-    color: var(--clr-neutral-400);
-    font-size: 0.8rem;
-    letter-spacing: var(--letter-sp);
-}
-footer{
-    text-align: center;
-    margin: 1rem;
+
+@media (min-width: 43em) {
+    .card__stats-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 2rem;
+    }
 }
